@@ -4,64 +4,94 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>List of Animals</title>
+    <title>Film finder</title>
+    <link rel="stylesheet" href="style.css" />
     <script defer type="text/javascript" src="movies.js"></script>
     <script defer type="text/javascript" src="script.js"></script>
   </head>
 
   <body>
-    <h1>Winc film finder</h1>
-    <nav class="all-buttons">
-      <input
-        type="radio"
-        class="radio-input"
-        id="latestmovies"
-        name="find"
-        value="2014"
-      />
-      <label class="label" for="latestmovies"
-        >Latest movies, 2014 or newer</label
-      >
 
-      <input
-        type="radio"
-        class="radio-input"
-        id="avengermovies"
-        name="find"
-        value="avenger"
-      />
-      <label class="label" for="avengermovies">Avenger movies</label>
+    <div class="grid">
+      <div class="header">
+        <h1>Winc film finder</h1>
+      </div>
 
-      <input
-        type="radio"
-        class="radio-input"
-        id="xmenmovies"
-        name="find"
-        value="xmen"
-      />
-      <label class="label" for="xmenmovies">X-Men movies</label>
+        <div id="searchWrapper" class="zoekbalk">
+          <input
+            type="text"
+            name="searchBar"
+            id="searchBar"
+            placeholder="Search for a movie, character or year"
+          />
+        </div>
 
-      <input
-        type="radio"
-        class="radio-input"
-        id="princessmovies"
-        name="find"
-        value="princess"
-      />
-      <label class="label" for="princessmovies">Princess movies</label>
 
-      <input
-        type="radio"
-        class="radio-input"
-        id="batmanmovies"
-        name="find"
-        value="batman"
-      />
-      <label class="label" for="batmanmovies">Batman Movies</label>
-    </nav>
+      <div class="menu">
+        <nav class="all-buttons">
+          <label class="label" for="latestmovies"
+            >Latest movies, 2014 or newer
+            <input
+              type="radio"
+              class="radio-input"
+              id="latestmovies"
+              name="find"
+              value="2014"
+            />
+          </label>
+          <label class="label" for="avengermovies"
+            >Avenger movies
+            <input
+              type="radio"
+              class="radio-input"
+              id="avengermovies"
+              name="find"
+              value="avenger"
+            />
+          </label>
+          <label class="label" for="xmenmovies"
+            >X-Men movies
+            <input
+              type="radio"
+              class="radio-input"
+              id="xmenmovies"
+              name="find"
+              value="xmen"
+            />
+          </label>
 
-    <div class="ul-films">
-      <ul id="UL"></ul>
+          <label class="label" for="princessmovies"
+            >Princess movies
+            <input
+              type="radio"
+              class="radio-input"
+              id="princessmovies"
+              name="find"
+              value="princess"
+            />
+          </label>
+          <label class="label" for="batmanmovies"
+            >Batman Movies
+            <input
+              type="radio"
+              class="radio-input"
+              id="batmanmovies"
+              name="find"
+              value="batman"
+            />
+          </label>
+        </nav>
+      </div>
+
+      <div class="main">
+        <ul id="charactersList"></ul>
+      </div>
+
+      <div class="main">
+        <div class="ul-films" id="ul-films1">
+          <ul id="UL" class="ULL"></ul>
+        </div>
+      </div>
     </div>
   </body>
 </html>

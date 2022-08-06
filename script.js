@@ -1,15 +1,34 @@
-const addMoviesToTheDom = function () {
-  movies.map((movie) => {
-    var newLi = document.createElement("li");
+// Asignment Film Finder
+
+// AddMoviesToTheDOM FUNCTION:
+
+const addMoviesToTheDom = function (inputt) {
+  inputt.map((movie) => {
     const UL = document.getElementById("UL");
-    const titleMovie = movie.poster;
+    var newLi = document.createElement("li");
+    const createA = document.createElement("a");
     UL.appendChild(newLi);
-    img = new Image(100, 100);
-    img.src = titleMovie;
-    newLi.appendChild(img);
+    newLi.appendChild(createA);
+    const Linkmovie = "https://www.imdb.com/title/" + movie.imdbID;
+    createA.href = Linkmovie;
+    createA.target = "_blank"; // Heb er een target link van gemaakt. Vind ik persoonlijk veel prettiger.
+    const posterMovie = movie.poster;
+    img = new Image();
+    img.src = posterMovie;
+    createA.appendChild(img);
   });
 };
-document.addEventListener("DOMContentLoaded", addMoviesToTheDom);
+document.addEventListener("DOMContentLoaded", addMoviesToTheDom(movies));
+
+// DE FILTERS:
+
+var filter2014 = movies.filter((movie) => movie.year >= 2014);
+var filterPrincess = movies.filter((movie) => movie.title.includes("Princess"));
+var filterXmen = movies.filter((movie) => movie.title.includes("X-Men"));
+var filterAvengers = movies.filter((movie) => movie.title.includes("Avengers"));
+var filterBatman = movies.filter((movie) => movie.title.includes("Batman"));
+
+// HandeOnChangeEvent FUNCTION:
 
 const handeOnChangeEvent = function () {
   const inputAllButtons = document.querySelectorAll(".radio-input");
@@ -18,23 +37,70 @@ const handeOnChangeEvent = function () {
       console.log(e.target);
       switch (e.target.value) {
         case "2014":
-          console.log("heyy hallooooo 2014");
+          removeUl();
+          addMoviesToTheDom(filter2014);
           break;
         case "avenger":
-          console.log("heyy hallooooo avenger");
+          removeUl();
+          addMoviesToTheDom(filterAvengers);
+
           break;
         case "xmen":
-          console.log("Heyy hallo xmen");
+          removeUl();
+          addMoviesToTheDom(filterXmen);
+
           break;
         case "princess":
-          console.log("Heyy hallo Princess");
+          removeUl();
+          addMoviesToTheDom(filterPrincess);
           break;
         case "batman":
-          console.log("Heyy hallo BATMANN");
+          removeUl();
+          addMoviesToTheDom(filterBatman);
           break;
+        default:
+          addMoviesToTheDom();
       }
     });
   });
 };
 document.addEventListener("DOMContentLoaded", handeOnChangeEvent);
-// console.log(handeOnChangeEvent(addMoviesToTheDom)); (zo zou je het ook in console log weergeven)
+
+//removeUl FUNCTION:
+
+const removeUl = () => {
+  const removeChilds = document.getElementById("UL");
+  removeChilds.innerHTML = "";
+};
+
+// SEARCHBAR
+
+const charactersList = document.getElementById("charactersList");
+const searchBar = document.getElementById("searchBar");
+
+searchBar.addEventListener("keyup", (e) => {
+  const searchString = e.target.value.toLowerCase();
+  const filteredCharacters = movies.filter((moviee) => {
+    return (
+      moviee.title.toLowerCase().includes(searchString) ||
+      moviee.year.toLowerCase().includes(searchString)
+    );
+  });
+  removeUl();
+  displayCharacters(filteredCharacters);
+});
+
+const loadCharacters = async () => {
+  try {
+    const res = await fetch(movie.poster);
+    hpCharacters = await res.json();
+    displayCharacters(hpCharacters);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const displayCharacters = (characters) => {
+  addMoviesToTheDom(characters);
+};
+loadCharacters();
