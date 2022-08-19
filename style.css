@@ -93,12 +93,15 @@ h1 {
 
   .menu nav {
     display: flex;
-    justify-content: flex-start;
-    flex-wrap: no-wrap;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   .menu nav label {
     display: block;
-    margin-right: 10px;
+  }
+  .menu nav label input {
+    display: block;
+    margin-left: 2px;
   }
 }
