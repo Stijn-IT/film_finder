@@ -81,3 +81,13 @@ h1 {
   padding: 5px 10px;
   font-size: 12px;
 }
+
+@media screen and (max-width: 600px) {
+  body {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  .label {
+    font-size: 10px;
+  }
+}
