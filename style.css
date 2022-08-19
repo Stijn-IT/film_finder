@@ -88,16 +88,17 @@ h1 {
     margin-left: 10px;
   }
   .label {
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .menu nav {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
+    flex-wrap: no-wrap;
   }
 
-  .menu nav label input {
-    display: inline-block;
-    margin-top: 5px;
+  .menu nav label {
+    display: block;
+    margin-right: 10px;
   }
 }
